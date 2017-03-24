@@ -30,6 +30,13 @@ class GroupsController < ApplicationController
     redirect_to groups_path, notice: "Update Success更改成功"
   end
 
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    flash[:alert] = "Groups deteled"
+    redirect_to groups_path
+  end
+
   private
 
   def group_params
