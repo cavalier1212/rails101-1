@@ -1,6 +1,15 @@
 <div class="col-md-12">
   <div class="group">
 
+    <span class="pull-right">
+      <% if current_user && current_user.is_member_of?(@group) %>
+      <label class="label label-success">群組成員</label>
+      <% else %>
+      <label class="label label-warning">你是誰？請登入加入群組！</label>
+      <% end %>
+    </span>
+
+
     <%= link_to("write a post", new_group_post_path(@group), class: "btn btn-default pull-right")%>
 
     <% if current_user && current_user == @group.user %>
@@ -30,6 +39,6 @@
   <div class="text-center">
     <%= will_paginate @posts%>
   </div>
-  
+
 </div>
 <% end %>
