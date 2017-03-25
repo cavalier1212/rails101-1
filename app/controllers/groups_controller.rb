@@ -38,11 +38,11 @@ end
   end
 end
 
-  def destroy
-    @group.destroy
-    flash[:alert] = "Groups deteled"
-    redirect_to groups_path
-  end
+def destroy
+  @group.destroy
+  redirect_to groups_path, alert: "Group deleted"
+end
+
 
   def join
     @group = Group.find(params[:id])
@@ -72,16 +72,16 @@ end
 
   private
 
-def find_group_and_check_permission
-  @group = Group.find(params[:id])
+  def find_group_and_check_permission
+    @group = Group.find(params[:id])
 
-  if current_user !=group.user
-    redirect_to root_path, alert: "you have no permission."
+    if current_user != @group.user
+      redirect_to root_path, alert: "You have no permission."
+    end
   end
-end
 
   def group_params
     params.require(:group).permit(:title, :description)
   end
 
-end
+end 
