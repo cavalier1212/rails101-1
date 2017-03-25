@@ -2,7 +2,7 @@
   <div class="group">
 
     <%= link_to("write a post", new_group_post_path(@group), class: "btn btn-default pull-right")%>
-    
+
     <% if current_user && current_user == @group.user %>
     <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right")%>
   </div>
@@ -27,5 +27,9 @@
       <% end %>
     </tbody>
   </table>
+  <div class="text-center">
+    <%= will_paginate @posts%>
+  </div>
+  
 </div>
 <% end %>
