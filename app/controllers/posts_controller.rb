@@ -17,6 +17,15 @@ class PostsController < ApplicationController
     else
       render :new
   end
+
+def update
+    @group = Group.find(params[:id])
+
+    @post.update(post_params)
+
+    redirect_to groups_path, notice: "Update Success"
+  end
+
 end
 
 private
