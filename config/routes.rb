@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
    resources :groups do
-     resources :post
+     resources :posts
    end
 root 'groups#index'
 end
